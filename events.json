@@ -1,0 +1,45 @@
+[
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/game-changer.jpg",
+        "title": "Game Changer",
+        "description": "New episodes every other monday",
+        "resourceUrl": "event/game-changer"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/very-important-people.jpg",
+        "title": "Very Important people",
+        "description": "New episodes every other friday",
+        "resourceUrl": "event/very-important-people"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/smartypants.jpg",
+        "title": "Smartypants",
+        "description": "New episodes every other thursday",
+        "resourceUrl": "event/smartypants"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/thousandaires.jpg",
+        "title": "Thousandaires",
+        "description": "New episodes every other friday (soon)",
+        "resourceUrl": "event/thousandaires"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/breaking-news.jpg",
+        "title": "Breaking News",
+        "description": "New episodes every other tuesday",
+        "resourceUrl": "event/breaking-news"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/um-actually.jpg",
+        "title": "Um, Actually",
+        "description": "New episodes every other tuesday",
+        "resourceUrl": "event/um-actually"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/dimension-20.jpg",
+        "title": "Dimension 20",
+        "description": "New episodes every wednesday",
+        "resourceUrl": "event/dimension-20"
+    }
+  ]
+  
