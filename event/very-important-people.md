@@ -1,5 +1,5 @@
 ---
-title: Watch Parties
+title: Very Important People
 layout: page
 type: watch
 ---

@@ -1,5 +1,5 @@
 ---
-title: Watch Parties
+title: Game Changer
 layout: page
 type: watch
 ---

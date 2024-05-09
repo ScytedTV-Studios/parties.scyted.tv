@@ -1,5 +1,5 @@
 ---
-title: Watch Parties
+title: Thousandaires
 layout: page
 type: watch
 ---

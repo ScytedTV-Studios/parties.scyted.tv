@@ -1,5 +1,5 @@
 ---
-title: Watch Parties
+title: Breaking News
 layout: page
 type: watch
 ---
