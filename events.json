@@ -40,6 +40,12 @@
         "title": "Dimension 20",
         "description": "New episodes every wednesday",
         "resourceUrl": "event/dimension-20"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/adventuring-party.jpg",
+        "title": "Adventuring Party",
+        "description": "New episodes every thirsday",
+        "resourceUrl": "event/adventuring-party"
     }
   ]
   
