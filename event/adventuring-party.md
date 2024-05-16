@@ -1,5 +1,5 @@
 ---
-title: Very Important People
+title: Adventuring Party
 layout: page
 type: watch
 ---
