@@ -46,6 +46,24 @@
         "title": "Adventuring Party",
         "description": "New episodes every thirsday",
         "resourceUrl": "event/adventuring-party"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/dirty-laundry.jpg",
+        "title": "Dirty Laundry",
+        "description": "No New Events",
+        "resourceUrl": "event/dirty-laundry"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/make-some-noise.jpg",
+        "title": "Make Some Noise",
+        "description": "No New Events",
+        "resourceUrl": "event/make-some-noise"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/play-it-by-ear.jpg",
+        "title": "Play It By Ear",
+        "description": "No New Events",
+        "resourceUrl": "event/play-it-by-ear"
     }
   ]
   
