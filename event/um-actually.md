@@ -24,10 +24,12 @@ type: watch
 
 </style>
 
-<script src="https://cdn.logwork.com/widget/countdown.js"></script>
-<a href="https://logwork.com/countdown-ejgz" class="countdown-timer" data-timezone="America/Edmonton" data-textcolor="#252026" data-date="2024-05-21 17:03" data-background="#252026" data-digitscolor="#feea3b" data-unitscolor="#252026">Watch Party: Um, Actually</a>
+<!-- <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+<a href="https://logwork.com/countdown-ejgz" class="countdown-timer" data-timezone="America/Edmonton" data-textcolor="#252026" data-date="2024-05-21 17:03" data-background="#252026" data-digitscolor="#feea3b" data-unitscolor="#252026">Watch Party: Um, Actually</a> -->
 
 <!-- <script src="https://api.scyted.tv/wave-development/dashboard/page-loading-script.js"></script> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LF3ZTHGQHE"></script>
+
+<script>(function(d, s, id) { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//www.tickcounter.com/static/js/loader.js"; pjs.parentNode.insertBefore(js, pjs); }(document, "script", "tickcounter-sdk"));</script><a data-type="countup" data-id="358394" class="tickcounter" style="display:block; left:0; width:100%; height:0; position:relative; padding-bottom:25%; margin:0 auto;" title="" href="//www.tickcounter.com/countup"></a>
 
 </body>
