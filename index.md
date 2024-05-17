@@ -12,7 +12,7 @@ type: watch
         display: none;
     }
 </style>
-<link rel="stylesheet" href="https://api.scyted.tv/wave-development/dashboard/scytedtv-resources.css">
+<link rel="stylesheet" href="index-styles.css">
 <!-- <link rel="stylesheet" href="https://api.scyted.tv/wave-development/dashboard/mobile-lock.css"> -->
 <body>
 
