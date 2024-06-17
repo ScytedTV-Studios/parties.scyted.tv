@@ -38,13 +38,13 @@
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/dimension-20.jpg",
         "title": "Dimension 20",
-        "description": "New episodes every wednesday",
+        "description": "New season june 26th",
         "resourceUrl": "event/dimension-20"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/adventuring-party.jpg",
         "title": "Adventuring Party",
-        "description": "No New Events",
+        "description": "New season june 27th",
         "resourceUrl": "event/adventuring-party"
     },
     {
@@ -56,7 +56,7 @@
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/make-some-noise.jpg",
         "title": "Make Some Noise",
-        "description": "New Season June 24th",
+        "description": "New season june 24th",
         "resourceUrl": "event/make-some-noise"
     },
     {
