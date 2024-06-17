@@ -50,7 +50,7 @@
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/dirty-laundry.jpg",
         "title": "Dirty Laundry",
-        "description": "No New Events",
+        "description": "Watch full season",
         "resourceUrl": "event/dirty-laundry"
     },
     {
@@ -62,8 +62,14 @@
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/play-it-by-ear.jpg",
         "title": "Play It By Ear",
-        "description": "No New Events",
+        "description": "Watch full season",
         "resourceUrl": "event/play-it-by-ear"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/dropout-presents.jpg",
+        "title": "Dropout Presents",
+        "description": "New special june 21st",
+        "resourceUrl": "event/dropout-presents"
     }
   ]
   
