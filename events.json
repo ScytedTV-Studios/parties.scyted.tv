@@ -75,7 +75,13 @@
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/monets-slumber-party.jpg",
         "title": "Monét's Slumber Party",
         "description": "Series premiere july 19th",
-        "resourceUrl": "event/dropout-presents"
+        "resourceUrl": "event/monets-slumber-party"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/adventuring-academy.jpg",
+        "title": "Adventuring Academy",
+        "description": "Series premiere july 1st",
+        "resourceUrl": "event/adventuring-academy"
     }
   ]
   
