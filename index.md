@@ -29,13 +29,13 @@ type: watch
     <input type="text" class="search-bar" placeholder="Search shows...">
   </div>
 
-<iframe src="https://discord.com/widget?id=1237187833324638209&theme=dark" width="350" height="100%" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-
 <div class="grid" id="resource-grid">
   <!-- Resources will be dynamically added here -->
 </div>
 
-  <script src="script.js"></script>
+<iframe src="https://discord.com/widget?id=1237187833324638209&theme=dark" width="100%" height="1000" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
+<script src="script.js"></script>
 
 <!-- <script src="https://api.scyted.tv/wave-development/dashboard/page-loading-script.js"></script> -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LF3ZTHGQHE"></script>
