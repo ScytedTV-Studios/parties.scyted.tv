@@ -2,85 +2,85 @@
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/game-changer.jpg",
         "title": "Game Changer",
-        "description": "Watch full season",
+        "description": "",
         "resourceUrl": "event/game-changer"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/very-important-people.jpg",
         "title": "Very Important people",
-        "description": "Watch full season",
+        "description": "",
         "resourceUrl": "event/very-important-people"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/smartypants.jpg",
         "title": "Smartypants",
-        "description": "New episodes every other thursday",
+        "description": "",
         "resourceUrl": "event/smartypants"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/thousandaires.jpg",
         "title": "Thousandaires",
-        "description": "New episodes every other friday",
+        "description": "",
         "resourceUrl": "event/thousandaires"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/breaking-news.jpg",
         "title": "Breaking News",
-        "description": "New episodes every other tuesday",
+        "description": "",
         "resourceUrl": "event/breaking-news"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/um-actually.jpg",
         "title": "Um, Actually",
-        "description": "New episodes every other tuesday",
+        "description": "",
         "resourceUrl": "event/um-actually"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/dimension-20.jpg",
         "title": "Dimension 20",
-        "description": "New season june 26th",
+        "description": "",
         "resourceUrl": "event/dimension-20"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/adventuring-party.jpg",
         "title": "Adventuring Party",
-        "description": "New season june 27th",
+        "description": "",
         "resourceUrl": "event/adventuring-party"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/dirty-laundry.jpg",
         "title": "Dirty Laundry",
-        "description": "Watch full season",
+        "description": "",
         "resourceUrl": "event/dirty-laundry"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/make-some-noise.jpg",
         "title": "Make Some Noise",
-        "description": "New episodes every other monday",
+        "description": "",
         "resourceUrl": "event/make-some-noise"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/play-it-by-ear.jpg",
         "title": "Play It By Ear",
-        "description": "Watch full season",
+        "description": "",
         "resourceUrl": "event/play-it-by-ear"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/dropout-presents.jpg",
         "title": "Dropout Presents",
-        "description": "No new events",
+        "description": "",
         "resourceUrl": "event/dropout-presents"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/monets-slumber-party.jpg",
         "title": "Monét's Slumber Party",
-        "description": "Series premiere july 19th",
+        "description": "",
         "resourceUrl": "event/monets-slumber-party"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/adventuring-academy.jpg",
         "title": "Adventuring Academy",
-        "description": "Series premiere july 1st",
+        "description": "",
         "resourceUrl": "event/adventuring-academy"
     }
   ]
