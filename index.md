@@ -33,7 +33,7 @@ type: watch
   <!-- Resources will be dynamically added here -->
 </div>
 
-<iframe src="https://discord.com/widget?id=1237187833324638209&theme=dark" width="100%" height="1000" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+<!-- <iframe src="https://discord.com/widget?id=1237187833324638209&theme=dark" width="100%" height="1000" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe> -->
 
 <script src="script.js"></script>
 
