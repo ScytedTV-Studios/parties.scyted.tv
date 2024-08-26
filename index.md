@@ -37,4 +37,30 @@ type: watch
 
 <script src="script.js"></script>
 
+<div class="section">
+  <h1 class="title is-1 is-uppercase has-text-weight-bold">
+  </h1>
+  <hr class="has-background-black">
+</div>
+
+<style>
+        .styled-calendar-container {
+            width: 100%;
+            border: none;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .styled-calendar-container {
+                margin-top: auto;
+                flex-grow: 1;
+            }
+        }
+    
+    </style>
+
+<iframe id="calendar-iframe" src="https://embed.styledcalendar.com/#zHDX41pb2rz5hdj5J6hB" title="ScytedTV Calendar"
+        class="styled-calendar-container" data-cy="calendar-embed-iframe"></iframe>
+<script async type="module" src="https://embed.styledcalendar.com/assets/parent-window.js"></script>
+
 </body>
