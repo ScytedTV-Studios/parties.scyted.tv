@@ -82,6 +82,18 @@
         "title": "Adventuring Academy",
         "description": "Dropout",
         "resourceUrl": "event/adventuring-academy"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/gastronauts.jpg",
+        "title": "Gastronauts",
+        "description": "Dropout",
+        "resourceUrl": "event/gastronauts"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/tindalos.jpg",
+        "title": "Tindalos",
+        "description": "ScytedTV",
+        "resourceUrl": "event/tindalos"
     }
   ]
   
