@@ -94,6 +94,12 @@
         "title": "Tindalos",
         "description": "ScytedTV",
         "resourceUrl": "event/tindalos"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/clever-remarks.jpg",
+        "title": "Clever Remarks",
+        "description": "ScytedTV",
+        "resourceUrl": "event/clever-remarks"
     }
   ]
   
