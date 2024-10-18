@@ -36,10 +36,16 @@
         "resourceUrl": "event/um-actually"
     },
     {
-        "imageUrl": "https://cdn.scyted.tv/dropout/poster/dimension-20-misfits-and-magic.jpg",
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/dimension-20.jpg",
         "title": "Dimension 20",
         "description": "Dropout",
         "resourceUrl": "event/dimension-20"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/adventuring-party.jpg",
+        "title": "Adventuring Party",
+        "description": "Dropout",
+        "resourceUrl": "event/adventuring-party"
     },
     {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/dirty-laundry.jpg",
@@ -54,6 +60,12 @@
         "resourceUrl": "event/make-some-noise"
     },
     {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/play-it-by-ear.jpg",
+        "title": "Play It By Ear",
+        "description": "Dropout",
+        "resourceUrl": "event/play-it-by-ear"
+    },
+    {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/dropout-presents.jpg",
         "title": "Dropout Presents",
         "description": "Dropout",
@@ -66,10 +78,28 @@
         "resourceUrl": "event/monets-slumber-party"
     },
     {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/adventuring-academy.jpg",
+        "title": "Adventuring Academy",
+        "description": "Dropout",
+        "resourceUrl": "event/adventuring-academy"
+    },
+    {
         "imageUrl": "https://cdn.scyted.tv/dropout/poster/gastronauts.jpg",
         "title": "Gastronauts",
         "description": "Dropout",
         "resourceUrl": "event/gastronauts"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/tindalos.jpg",
+        "title": "Tindalos",
+        "description": "ScytedTV",
+        "resourceUrl": "event/tindalos"
+    },
+    {
+        "imageUrl": "https://cdn.scyted.tv/dropout/poster/clever-remarks.jpg",
+        "title": "Clever Remarks",
+        "description": "ScytedTV",
+        "resourceUrl": "event/clever-remarks"
     }
   ]
   
