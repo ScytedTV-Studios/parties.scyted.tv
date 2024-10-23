@@ -28,6 +28,6 @@ type: watch
 <a href="https://logwork.com/countdown-ejgz" class="countdown-timer" data-timezone="America/Edmonton" data-textcolor="#252026" data-date="2024-05-17 17:03" data-background="#252026" data-digitscolor="#feea3b" data-unitscolor="#252026">Watch Party: Very Important People</a> -->
 
 <!-- <script src="https://api.scyted.tv/wave-development/dashboard/page-loading-script.js"></script> -->
-<iframe src="https://api.scyted.tv/parties/timer?id=event42" width="100%" height="500" frameborder="0"></iframe>
+<iframe src="../test2" width="100%" height="500" frameborder="0"></iframe>
 
 </body>
