@@ -120,8 +120,8 @@
 
                 const container = document.getElementById('events-container');
 
-                // Loop through events and create iframes
-                events.forEach(event => {
+                // Display only the next 5 upcoming events
+                events.slice(0, 5).forEach(event => {
                     const eventDiv = document.createElement('div');
                     eventDiv.classList.add('event');
 
