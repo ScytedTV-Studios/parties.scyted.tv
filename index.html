@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScytedTV Parties | Upcoming Events</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            padding: 20px 0;
+            margin-bottom: 0;
+            font-size: 2rem;
+        }
+
+        #events-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .event {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .event:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .event h2 {
+            background-color: #feea3b;
+            color: black;
+            padding: 15px;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .event iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #feea3b;
+            color: #fff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+                padding: 15px 0;
+            }
+
+            .event {
+                margin-bottom: 20px;
+            }
+
+            .event h2 {
+                font-size: 1.3rem;
+                padding: 12px;
+            }
+
+            .event iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .event h2 {
+                font-size: 1.2rem;
+                padding: 10px;
+            }
+
+            .event iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Upcoming Events</h1>
+    <div id="events-container"></div>
+
+    <script>
+        // JSON file URL (with a unique timestamp to prevent caching)
+        const jsonUrl = `https://api.scyted.tv/parties/events.json?timestamp=${new Date().getTime()}`;
+
+        // Fetch and display the events
+        fetch(jsonUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Sort events by epoch time (ascending)
+                const events = data.events.sort((a, b) => a.epoch - b.epoch);
+
+                const container = document.getElementById('events-container');
+
+                // Loop through events and create iframes
+                events.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.classList.add('event');
+
+                    // Create the iframe embed
+                    eventDiv.innerHTML = `
+                <h2>${event.name}</h2>
+                <iframe src="https://api.scyted.tv/parties/timer?id=${event.id}" frameborder="0"></iframe>
+            `;
+
+                    container.appendChild(eventDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching events:', error));
+    </script>
+
+</body>
+
+</html>

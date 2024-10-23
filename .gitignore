@@ -20,6 +20,7 @@ resources/music-library/
 testing/
 cast/
 resources/discord-auth
+event/
 # show/do/
 
 # REMOVING THINGS FROM THE REPO:
