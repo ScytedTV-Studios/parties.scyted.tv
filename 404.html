@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScytedTV Parties | Upcoming Events</title>
+    <link rel="stylesheet" href="https://api.scyted.tv/wave-development/scrollbar-styles.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: #141414;
+            color: #fff;
         }
 
         h1 {
             text-align: center;
-            color: black;
+            color: #fff;
             padding: 20px 0;
             margin-bottom: 0;
             font-size: 2rem;
@@ -28,8 +29,15 @@
             padding: 20px;
         }
 
+        .section-title {
+            font-size: 1.8rem;
+            color: #FEEA3B;
+            margin: 30px 0 10px;
+        }
+
         .event {
-            background-color: #fff;
+            position: relative;
+            background-color: #FEEA3B;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
@@ -50,10 +58,67 @@
             font-size: 1.5rem;
         }
 
-        .event iframe {
-            width: 100%;
+        .live-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: gray;
+            transition: background-color 0.3s ease;
+        }
+
+        .flashing {
+            animation: flash 1s infinite;
+        }
+
+        .iframe-wrapper {
+            position: relative;
             height: 400px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .iframe-wrapper .blurred-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: 0;
+        }
+
+        .event iframe {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            height: 90%;
             border: none;
+            background-color: transparent;
+        }
+
+        @keyframes flash {
+            0% {
+                background-color: lightcoral;
+            }
+            50% {
+                background-color: red;
+            }
+            100% {
+                background-color: lightcoral;
+            }
+        }
+
+        .green {
+            background-color: green;
         }
 
         footer {
@@ -80,8 +145,9 @@
                 padding: 12px;
             }
 
-            .event iframe {
-                height: 300px;
+            .iframe-wrapper {
+                padding-top: 12px;
+                padding-bottom: 12px;
             }
         }
 
@@ -95,8 +161,9 @@
                 padding: 10px;
             }
 
-            .event iframe {
-                height: 350px;
+            .iframe-wrapper {
+                padding-top: 12px;
+                padding-bottom: 12px;
             }
         }
     </style>
@@ -105,36 +172,109 @@
 <body>
 
     <h1>Upcoming Events</h1>
-    <div id="events-container"></div>
+    <div id="events-container">
+        <div id="live-discussions">
+            <h2 class="section-title">Live Discussions</h2>
+        </div>
+        <div id="releases">
+            <h2 class="section-title">Releases</h2>
+        </div>
+    </div>
 
+
+    
     <script>
-        // JSON file URL (with a unique timestamp to prevent caching)
-        const jsonUrl = `https://api.scyted.tv/parties/events.json?timestamp=${new Date().getTime()}`;
+        const jsonUrl = `https://api.scyted.tv/parties/events-test.json?timestamp=${new Date().getTime()}`;
 
-        // Fetch and display the events
         fetch(jsonUrl)
             .then(response => response.json())
             .then(data => {
-                // Sort events by epoch time (ascending)
                 const events = data.events.sort((a, b) => a.epoch - b.epoch);
 
-                const container = document.getElementById('events-container');
+                const liveDiscussions = events.filter(event => event.epoch && event.endEpoch);
+                const releases = events.filter(event => event.epoch && !event.endEpoch);
 
-                // Display only the next 5 upcoming events
-                events.slice(0, 5).forEach(event => {
-                    const eventDiv = document.createElement('div');
-                    eventDiv.classList.add('event');
+                const liveContainer = document.getElementById('live-discussions');
+                const releasesContainer = document.getElementById('releases');
 
-                    // Create the iframe embed
-                    eventDiv.innerHTML = `
-                <h2>${event.name}</h2>
-                <iframe src="https://api.scyted.tv/parties/timer?id=${event.id}" frameborder="0"></iframe>
-            `;
+                if (liveDiscussions.length > 0) {
+                    const liveEvent = liveDiscussions[0];
+                    const liveEventDiv = createEventDiv(liveEvent);
+                    liveContainer.appendChild(liveEventDiv);
+                } else {
+                    liveContainer.innerHTML += "<p>No live discussions available.</p>";
+                }
 
-                    container.appendChild(eventDiv);
+                releases.slice(0, 3).forEach(release => {
+                    const releaseDiv = createEventDiv(release);
+                    releasesContainer.appendChild(releaseDiv);
                 });
+
+                // Check each event every second for its status
+                setInterval(() => {
+                    events.forEach(event => {
+                        const eventDiv = document.getElementById(`event-${event.id}`);
+                        const indicator = eventDiv.querySelector('.live-indicator');
+                        updateLiveIndicator(event, indicator);
+                    });
+                }, 1000);
             })
             .catch(error => console.error('Error fetching events:', error));
+
+        function createEventDiv(event) {
+            const eventDiv = document.createElement('div');
+            eventDiv.classList.add('event');
+            eventDiv.id = `event-${event.id}`;
+
+            const coverStyle = event.cover
+                ? `background-image: url('${event.cover}');`
+                : `background-color: white;`;
+
+            eventDiv.innerHTML = `
+                <h2>${event.name}</h2>
+                <div class="iframe-wrapper">
+                    <div class="blurred-background" style="${coverStyle}"></div>
+                    <iframe src="https://api.scyted.tv/parties/timer-test?id=${event.id}" frameborder="0"></iframe>
+                </div>
+                <div class="live-indicator"></div>
+            `;
+
+            return eventDiv;
+        }
+
+        function updateLiveIndicator(event, indicator) {
+            const now = Math.floor(Date.now() / 1000); // Current epoch time
+            const { epoch, endEpoch } = event;
+
+            // Default state: gray
+            let indicatorClass = '';
+            let indicatorColor = 'gray';
+
+            if (now < epoch) {
+                // Before event starts
+                indicatorClass = '';
+                indicatorColor = 'gray';
+            } else if (now >= epoch && now <= epoch + 10) {
+                // 10 seconds before start
+                indicatorClass = 'flashing';
+                indicatorColor = 'yellow';
+            } else if (now >= epoch && now <= endEpoch) {
+                // Live discussions - event in progress
+                indicatorClass = 'flashing';
+                indicatorColor = 'red';
+            } else if (now > endEpoch) {
+                // Live discussions - event ended
+                indicatorClass = '';
+                indicatorColor = 'green';
+            } else if (now > epoch) {
+                // Releases - event has started
+                indicatorClass = '';
+                indicatorColor = 'green';
+            }
+
+            indicator.className = 'live-indicator ' + indicatorClass;
+            indicator.style.backgroundColor = indicatorColor;
+        }
     </script>
 
 </body>
