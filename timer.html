@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Timer</title>
+    <style>
+        /* Same CSS as before */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: transparent;
+        }
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .container.show {
+            opacity: 1;
+        }
+        #eventName {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #status {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        #timer {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #000;
+            background: #f1f1f1;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            display: inline-block;
+        }
+        .timer-container {
+            background: #fff !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container timer-container" id="timerContainer">
+        <div id="eventName">Loading...</div>
+        <div id="status">Loading...</div>
+        <div id="timer"></div>
+    </div>
+
+    <script>
+        const eventNameElement = document.getElementById('eventName');
+        const timerElement = document.getElementById('timer');
+        const statusElement = document.getElementById('status');
+        const timerContainer = document.getElementById('timerContainer');
+
+        function updateTimer(event, currentTime) {
+            const eventTime = event.epoch * 1000;
+            const endTime = event.endEpoch ? (event.endEpoch * 1000 + 180000) : null;
+            const studioName = event.studio;
+            const isFuture = eventTime - currentTime > 24 * 60 * 60 * 1000;
+
+            function updateDisplay() {
+                const now = Date.now();
+                const timeDifference = eventTime - now;
+                const formattedDate = new Intl.DateTimeFormat('en-US', {
+                    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
+                }).format(eventTime);
+
+                if (isFuture) {
+                    statusElement.textContent = "Releases On:";
+                    timerElement.textContent = formattedDate;
+                    if (timeDifference < 24 * 60 * 60 * 1000) {
+                        isFuture = false;
+                    }
+                } else if (timeDifference > 0) {
+                    statusElement.textContent = event.endEpoch ? "Starts In:" : "Releases In:";
+                    timerElement.textContent = formatCountdown(timeDifference);
+                } else if (endTime && now > endTime) {
+                    statusElement.textContent = "";
+                    timerElement.textContent = "Discussion Over";
+                } else if (timeDifference <= 0) {
+                    statusElement.textContent = "Available On:";
+                    timerElement.textContent = studioName;
+                }
+            }
+
+            updateDisplay(); // Initial update
+            const interval = setInterval(() => {
+                updateDisplay();
+                if (timeDifference <= 0 && (!endTime || Date.now() > endTime)) {
+                    clearInterval(interval); // Stop updating once done
+                }
+            }, 1000);
+
+            timerContainer.classList.add('show');
+        }
+
+        function formatCountdown(milliseconds) {
+            const hours = Math.floor(milliseconds / (1000 * 60 * 60));
+            const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+            return `${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        async function fetchEventTime(eventId) {
+            try {
+                const response = await fetch(addCacheBuster('https://api.scyted.tv/parties/events-test.json'));
+                const data = await response.json();
+                const event = data.events.find(e => e.id === eventId);
+
+                if (event) {
+                    eventNameElement.textContent = event.name;
+                    updateTimer(event, Date.now());
+                } else {
+                    eventNameElement.textContent = "Event not found.";
+                    statusElement.textContent = "";
+                    timerElement.textContent = "";
+                }
+            } catch (error) {
+                eventNameElement.textContent = "Error fetching event.";
+                statusElement.textContent = "";
+                timerElement.textContent = "";
+                console.error("Failed to fetch event time:", error);
+            }
+        }
+
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function addCacheBuster(url) {
+            const separator = url.includes('?') ? '&' : '?';
+            return `${url}${separator}cb=${new Date().getTime()}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const eventId = getQueryParam('id');
+            if (eventId) {
+                fetchEventTime(eventId);
+            } else {
+                eventNameElement.textContent = "No event ID provided.";
+                statusElement.textContent = "";
+                timerElement.textContent = "";
+            }
+        });
+    </script>
+</body>
+</html>
