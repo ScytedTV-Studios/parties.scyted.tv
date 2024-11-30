@@ -43,7 +43,7 @@
             margin-bottom: 15px;
         }
         #timer {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #000;
             background: #f1f1f1;
@@ -71,46 +71,55 @@
         const timerContainer = document.getElementById('timerContainer');
 
         function updateTimer(event, currentTime) {
-            const eventTime = event.epoch * 1000;
-            const endTime = event.endEpoch ? (event.endEpoch * 1000 + 180000) : null;
-            const studioName = event.studio;
-            const isFuture = eventTime - currentTime > 24 * 60 * 60 * 1000;
+    const eventTime = event.epoch * 1000; // Event start time
+    const endTime = event.endEpoch ? event.endEpoch * 1000 : null; // Event end time
+    const studioName = event.studio;
 
-            function updateDisplay() {
-                const now = Date.now();
-                const timeDifference = eventTime - now;
-                const formattedDate = new Intl.DateTimeFormat('en-US', {
-                    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
-                }).format(eventTime);
+    function updateDisplay() {
+        const now = Date.now();
 
-                if (isFuture) {
-                    statusElement.textContent = "Releases On:";
-                    timerElement.textContent = formattedDate;
-                    if (timeDifference < 24 * 60 * 60 * 1000) {
-                        isFuture = false;
-                    }
-                } else if (timeDifference > 0) {
-                    statusElement.textContent = event.endEpoch ? "Starts In:" : "Releases In:";
-                    timerElement.textContent = formatCountdown(timeDifference);
-                } else if (endTime && now > endTime) {
-                    statusElement.textContent = "";
-                    timerElement.textContent = "Discussion Over";
-                } else if (timeDifference <= 0) {
-                    statusElement.textContent = "Available On:";
-                    timerElement.textContent = studioName;
-                }
-            }
-
-            updateDisplay(); // Initial update
-            const interval = setInterval(() => {
-                updateDisplay();
-                if (timeDifference <= 0 && (!endTime || Date.now() > endTime)) {
-                    clearInterval(interval); // Stop updating once done
-                }
-            }, 1000);
-
-            timerContainer.classList.add('show');
+        // Check if the event is more than 24 hours into the future
+        if (now < eventTime && eventTime - now >= 24 * 60 * 60 * 1000) {
+            const formattedDate = new Intl.DateTimeFormat('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+            }).format(eventTime);
+            statusElement.textContent = "Releases On:";
+            timerElement.textContent = formattedDate;
+        } 
+        // Check if the event is less than 24 hours away
+        else if (now < eventTime) {
+            const timeDifference = eventTime - now;
+            statusElement.textContent = event.endEpoch ? "Starts In:" : "Releases In:";
+            timerElement.textContent = formatCountdown(timeDifference);
+        } 
+        // Check if the event has started and is in the count-up phase
+        else if (endTime && now >= eventTime && now < endTime) {
+            const timeElapsed = now - eventTime;
+            statusElement.textContent = "Current Timestamp:";
+            timerElement.textContent = formatCountdown(timeElapsed); // Count up from the start time
+        } 
+        // Check if the event end time has been reached
+        else if (endTime && now >= endTime) {
+            statusElement.textContent = "Available On:";
+            timerElement.textContent = studioName;
+            clearInterval(interval); // Stop updating
+        } 
+        // Default behavior for when the event is over or end time is undefined
+        else {
+            statusElement.textContent = "Available On:";
+            timerElement.textContent = studioName;
+            clearInterval(interval); // Stop updating
         }
+    }
+
+    updateDisplay(); // Initial display update
+    const interval = setInterval(updateDisplay, 1000); // Update every second
+    timerContainer.classList.add('show');
+}
+
 
         function formatCountdown(milliseconds) {
             const hours = Math.floor(milliseconds / (1000 * 60 * 60));
