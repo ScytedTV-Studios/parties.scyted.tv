@@ -1,169 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScytedTV Parties | Upcoming Events</title>
     <link rel="stylesheet" href="https://api.scyted.tv/wave-development/scrollbar-styles.css">
     <style>
-        /* Scoped styles for elements within #events-container */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #141414;
+            color: #fff;
+        }
 
-#events-container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #141414;
-    color: #fff;
-}
+        h1 {
+            text-align: center;
+            color: #fff;
+            padding: 20px 0;
+            margin-bottom: 0;
+            font-size: 2rem;
+        }
 
-#events-container h1 {
-    text-align: center;
-    color: #fff;
-    padding: 20px 0;
-    margin-bottom: 0;
-    font-size: 2rem;
-}
+        #events-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-#events-container h3 {
-    text-align: center;
-}
+        .section-title {
+            font-size: 1.8rem;
+            color: #FEEA3B;
+            margin: 30px 0 10px;
+        }
 
-#events-container .section-title {
-    font-size: 1.8rem;
-    color: #FEEA3B;
-    margin: 30px 0 10px;
-}
+        .event {
+            position: relative;
+            background-color: #FEEA3B;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
 
-#events-container .event {
-    position: relative;
-    background-color: #FEEA3B;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
+        .event:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
 
-#events-container .event:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
+        .event h2 {
+            background-color: #feea3b;
+            color: black;
+            padding: 15px;
+            margin: 0;
+            font-size: 1.5rem;
+        }
 
-#events-container .event h2 {
-    background-color: #feea3b;
-    color: black;
-    padding: 15px;
-    margin: 0;
-    font-size: 1.5rem;
-}
+        .live-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: gray;
+            transition: background-color 0.3s ease;
+        }
 
-#events-container .live-indicator {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: gray;
-    transition: background-color 0.3s ease;
-}
+        .flashing {
+            animation: flash 1s infinite;
+        }
 
-#events-container .flashing {
-    animation: flash 1s infinite;
-}
+        .iframe-wrapper {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
 
-#events-container .iframe-wrapper {
-    position: relative;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-}
+        .iframe-wrapper .blurred-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: 0;
+        }
 
-#events-container .iframe-wrapper .blurred-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    z-index: 0;
-}
+        .event iframe {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            height: 90%;
+            border: none;
+            background-color: transparent;
+        }
 
-#events-container .event iframe {
-    position: relative;
-    z-index: 1;
-    width: 90%;
-    height: 90%;
-    border: none;
-    background-color: transparent;
-}
+        @keyframes flash {
+            0% {
+                background-color: lightcoral;
+            }
+            50% {
+                background-color: red;
+            }
+            100% {
+                background-color: lightcoral;
+            }
+        }
 
-@keyframes flash {
-    0% {
-        background-color: lightcoral;
-    }
-    50% {
-        background-color: red;
-    }
-    100% {
-        background-color: lightcoral;
-    }
-}
+        .green {
+            background-color: green;
+        }
 
-#events-container .green {
-    background-color: green;
-}
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #feea3b;
+            color: #fff;
+        }
 
-/* Responsive adjustments for elements within #events-container */
-@media (max-width: 768px) {
-    #events-container h1 {
-        font-size: 1.8rem;
-        padding: 15px 0;
-    }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+                padding: 15px 0;
+            }
 
-    #events-container .event {
-        margin-bottom: 20px;
-    }
+            .event {
+                margin-bottom: 20px;
+            }
 
-    #events-container .event h2 {
-        font-size: 1.3rem;
-        padding: 12px;
-    }
+            .event h2 {
+                font-size: 1.3rem;
+                padding: 12px;
+            }
 
-    #events-container .iframe-wrapper {
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
-}
+            .iframe-wrapper {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+        }
 
-@media (max-width: 480px) {
-    #events-container h1 {
-        font-size: 1.5rem;
-    }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
 
-    #events-container .event h2 {
-        font-size: 1.2rem;
-        padding: 10px;
-    }
+            .event h2 {
+                font-size: 1.2rem;
+                padding: 10px;
+            }
 
-    #events-container .iframe-wrapper {
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
-}
+            .iframe-wrapper {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <h1>Upcoming Events</h1>
-    <!-- <a href="https://discord.gg/the-green-room-1237187833324638209"><h3>Join Discord</h3></a> -->
     <div id="events-container">
         <div id="live-discussions">
             <h2 class="section-title">Live Discussions</h2>
@@ -268,6 +276,7 @@
             indicator.style.backgroundColor = indicatorColor;
         }
     </script>
+
 </body>
 
 </html>
